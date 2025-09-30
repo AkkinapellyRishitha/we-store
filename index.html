@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WE STORE - Your Fashion Destination</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-store"></i>
+                    WE STORE
+                </div>
+                <nav class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#offers">Offers</a>
+                    <a href="#contact">Contact</a>
+                    <div class="cart-icon" onclick="openCartModal()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to WE STORE</h1>
+                <p>Your one-stop destination for trendy fashion and lifestyle products</p>
+                <a href="#products" class="cta-button">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers" id="offers">
+        <div class="container">
+            <h2>Special Offers</h2>
+            <div class="offers-container">
+                <div class="offer-card">
+                    <h3>Summer Sale</h3>
+                    <p>Get up to 50% off on selected summer collection</p>
+                    <span class="offer-badge">50% OFF</span>
+                </div>
+                <div class="offer-card">
+                    <h3>Buy 2 Get 1 Free</h3>
+                    <p>On all t-shirts and casual wear</p>
+                    <span class="offer-badge">B2G1</span>
+                </div>
+                <div class="offer-card">
+                    <h3>Flash Sale</h3>
+                    <p>Extra 20% off on already discounted items</p>
+                    <span class="offer-badge">20% OFF</span>
+                </div>
+                <div class="offer-card">
+                    <h3>New Arrivals</h3>
+                    <p>Check out our latest collection</p>
+                    <span class="offer-badge">NEW</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="category-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+                <button class="filter-btn" onclick="filterProducts('women')">Women</button>
+                <button class="filter-btn" onclick="filterProducts('kids')">Kids</button>
+                <button class="filter-btn" onclick="filterProducts('men')">Men</button>
+                <button class="filter-btn" onclick="filterProducts('shirts')">Shirts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="products" id="productGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Our Location</h3>
+                    <p>123 Fashion Street, Mumbai, India</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call Us</h3>
+                    <p>+91 1234567890</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>info@westore.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Shopping Cart</h2>
+                <button class="close-modal" onclick="closeCartModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="cartItems">
+                <!-- Cart items will be dynamically loaded here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    Total: ₹<span id="cartTotal">0</span>
+                </div>
+                <button class="btn-checkout" onclick="openCheckoutModal()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Product Details</h2>
+                <button class="close-modal" onclick="closeProductDetailModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="productDetailContent">
+                <!-- Product details will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Checkout</h2>
+                <button class="close-modal" onclick="closeCheckoutModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="checkoutContent">
+                <!-- Checkout details will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>WE STORE is your premier destination for trendy fashion at affordable prices. We offer a wide range of clothing for men, women, and kids.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#offers">Offers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 WE STORE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
